@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Leroy Merlin</string>
+    <string name="main">Главная</string>
+    <string name="bag">Корзина</string>
+</resources>
