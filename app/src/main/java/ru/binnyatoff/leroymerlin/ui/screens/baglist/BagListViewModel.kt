@@ -1,7 +1,5 @@
 package ru.binnyatoff.leroymerlin.ui.screens.baglist
 
-import android.util.Log
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,23 +11,7 @@ import ru.binnyatoff.leroymerlin.data.Product
 import ru.binnyatoff.leroymerlin.repository.Repository
 import javax.inject.Inject
 
-sealed class BagListState {
-    object Loading : BagListState()
-    class Loaded(val list: List<Product>, val amount: Int, val weight: Double, val price: Int) :
-        BagListState()
 
-    object Empty : BagListState()
-    class Error(val error: String) : BagListState()
-}
-
-sealed class BagListEvent {
-    object ScreenInit : BagListEvent()
-}
-
-sealed class BagListAction {
-    class ClickedBag(val product: Product) : BagListAction()
-    object None : BagListAction()
-}
 
 @HiltViewModel
 class BagListViewModel @Inject constructor(private val repository: Repository) : ViewModel() {

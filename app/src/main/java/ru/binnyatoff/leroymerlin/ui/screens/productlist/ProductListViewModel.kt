@@ -13,24 +13,6 @@ import ru.binnyatoff.leroymerlin.data.Product
 import ru.binnyatoff.leroymerlin.repository.Repository
 import javax.inject.Inject
 
-sealed class ProductListState {
-    object Loading : ProductListState()
-    class Loaded(val productList: List<Product>, val categoryList: List<Category>) :
-        ProductListState()
-
-    object Empty : ProductListState()
-    class Error(val error: String) : ProductListState()
-}
-
-sealed class ProductListEvent {
-    object ScreenInit : ProductListEvent()
-}
-
-sealed class ProductListAction {
-    class ClickedBag(val product: Product) : ProductListAction()
-    class ClickedShopList(val productId: Int, val inShopList: Boolean) : ProductListAction()
-    object None : ProductListAction()
-}
 
 @HiltViewModel
 class ProductListViewModel @Inject constructor(private val repository: Repository) : ViewModel() {

@@ -3,6 +3,9 @@ package ru.binnyatoff.leroymerlin.repository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import ru.binnyatoff.leroymerlin.data.*
+import ru.binnyatoff.leroymerlin.data.room.BagDTO
+import ru.binnyatoff.leroymerlin.data.room.BagDao
+import ru.binnyatoff.leroymerlin.data.room.ProductDao
 import javax.inject.Inject
 
 class Repository @Inject constructor(

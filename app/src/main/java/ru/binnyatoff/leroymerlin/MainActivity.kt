@@ -9,7 +9,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
-import ru.binnyatoff.leroymerlin.data.ProductDTO
 import ru.binnyatoff.leroymerlin.ui.navigation.BottomNavigation
 import ru.binnyatoff.leroymerlin.ui.navigation.BottomViewModel
 import ru.binnyatoff.leroymerlin.ui.navigation.NavigationGraph

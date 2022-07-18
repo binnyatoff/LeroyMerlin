@@ -7,9 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ru.binnyatoff.leroymerlin.data.AppDatabase
-import ru.binnyatoff.leroymerlin.data.BagDao
-import ru.binnyatoff.leroymerlin.data.ProductDao
+import ru.binnyatoff.leroymerlin.data.room.AppDatabase
+import ru.binnyatoff.leroymerlin.data.room.BagDao
+import ru.binnyatoff.leroymerlin.data.room.ProductDao
 import ru.binnyatoff.leroymerlin.repository.Repository
 import javax.inject.Singleton
 
@@ -20,7 +20,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideDataBase(@ApplicationContext applicationContext: Context):AppDatabase {
+    fun provideDataBase(@ApplicationContext applicationContext: Context): AppDatabase {
         return Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
@@ -29,12 +29,12 @@ class DataModule {
     }
 
     @Provides
-    fun provideProductDao(appDatabase: AppDatabase):ProductDao{
+    fun provideProductDao(appDatabase: AppDatabase): ProductDao {
        return appDatabase.productDao()
     }
 
     @Provides
-    fun provideBagDao(appDatabase: AppDatabase):BagDao{
+    fun provideBagDao(appDatabase: AppDatabase): BagDao {
         return appDatabase.bagDao()
     }
 

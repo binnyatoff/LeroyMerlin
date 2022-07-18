@@ -1,7 +1,7 @@
 package ru.binnyatoff.leroymerlin.repository
 
 import ru.binnyatoff.leroymerlin.R
-import ru.binnyatoff.leroymerlin.data.ProductDTO
+import ru.binnyatoff.leroymerlin.data.room.ProductDTO
 
 class ProductListCache {
     val list = listOf(
