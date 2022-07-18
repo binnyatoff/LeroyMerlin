@@ -2,4 +2,27 @@
     <string name="app_name">Leroy Merlin</string>
     <string name="main">Главная</string>
     <string name="bag">Корзина</string>
+    <string name="filter">Фильтры</string>
+    <string name="price_head">Цена по возрастанию</string>
+    <string name="putties">Шпаклевки</string>
+    <string name="in_bag">В корзину</string>
+    <string name="rub_amount">₽/шт.</string>
+    <string name="reviews">13 отзывов</string>
+    <string name="flag">Flag</string>
+    <string name="number_mock">82733340</string>
+    <string name="LM">ЛМ</string>
+    <string name="back">Back</string>
+    <string name="more">More</string>
+    <string name="star">Star</string>
+    <string name="mock">(68)</string>
+    <string name="item">item</string>
+    <string name="rub">₽</string>
+    <string name="one_amount">1 шт.</string>
+    <string name="total">Итого без доставки</string>
+    <string name="draw_up">Оформить заказ</string>
+    <string name="bag_empty">В корзине ничего нет</string>
+    <string name="bag_empty_text">Войдите в профиль, если вы уже добавляли товары под своими именем</string>
+    <string name="product_with_weight">товаров весом</string>
+    <string name="kg">кг</string>
+    <string name="entry">Войти</string>
 </resources>
