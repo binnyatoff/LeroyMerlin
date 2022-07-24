@@ -125,6 +125,10 @@ fun ProductDetailsLoaded(
                 top = 14.dp,
                 bottom = 14.dp), text = stringResource(id = R.string.reviews))
         }
+        Spacer(modifier = Modifier.weight(1F))
+        Divider(modifier = Modifier.padding(start = 16.dp),
+            color = AppTheme.colors.secondaryBackground,
+            thickness = 1.dp)
         Row(modifier = Modifier
             .height(80.dp)
             .padding(end = 16.dp),

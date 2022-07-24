@@ -80,6 +80,7 @@ fun BagListLoaded(
                     onClickButton = { viewModel.obtainAction(BagListAction.ClickedBag(it)) })
             }
         }
+        Spacer(modifier = Modifier.weight(1F))
         Text(fontSize = 12.sp,
             color = AppTheme.colors.minor,
             text = stringResource(id = R.string.total))
@@ -87,8 +88,9 @@ fun BagListLoaded(
             verticalAlignment = Alignment.CenterVertically) {
             Text(fontSize = 14.sp,
                 color = AppTheme.colors.primaryTextColor,
-                text = amount.toString() + stringResource(id = R.string.product_with_weight)
-                        + weight + stringResource(
+                text = amount.toString() + " " + stringResource(id = R.string.product_with_weight)
+                        + " " +
+                        +weight + " " + stringResource(
                     id = R.string.kg))
             Spacer(modifier = Modifier.weight(1F))
             Row(verticalAlignment = Alignment.Bottom) {
