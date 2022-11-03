@@ -50,9 +50,9 @@ class ProductDetailsViewModel @Inject constructor(private val repository: Reposi
     private fun getFromDatabase(productId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getProductFromDatabase(productId)
-            repository.product.collect {
-                if (it!=null) {
-                    _viewState.postValue(ProductDetailsState.Loaded(it))
+            repository.product.collect {product ->
+                if (product!=null) {
+                    _viewState.postValue(ProductDetailsState.Loaded(product))
                 }else
                     _viewState.postValue(ProductDetailsState.Empty)
             }

@@ -11,6 +11,7 @@ import javax.inject.Inject
 class Repository @Inject constructor(
     private val productDao: ProductDao,
     private val bagDao: BagDao,
+    private val productListCache: ProductListCache
 ) {
     private val _productList = MutableStateFlow<List<Product>>(listOf())
     val productList: StateFlow<List<Product>> = _productList
@@ -23,6 +24,9 @@ class Repository @Inject constructor(
 
     private val _bagSize = MutableStateFlow(0)
     val bagSize: StateFlow<Int> = _bagSize
+
+    private val _categoryList = MutableStateFlow<List<Category>>(listOf())
+    val categoryList:StateFlow<List<Category>> = _categoryList
 
     suspend fun updateInBag(product: Product) {
         productDao.updateInBag(product.productId, !product.inBag)
@@ -93,8 +97,8 @@ class Repository @Inject constructor(
         }
     }
 
-    suspend fun getBagSize(prductList: List<BagDTO>) {
-        val bagsize = prductList.size
+    private suspend fun getBagSize(productList: List<BagDTO>) {
+        val bagsize = productList.size
         _bagSize.emit(
             bagsize
         )
@@ -106,8 +110,11 @@ class Repository @Inject constructor(
     }
 
     private suspend fun saveToDatabase() {
-        val productList = ProductListCache()
-        productDao.insertAll(productList.list)
+        productDao.insertAll(productListCache.productList)
         getFromProductsDatabase()
+    }
+
+     suspend fun getCategoryList(){
+       _categoryList.emit(productListCache.categoryList)
     }
 }

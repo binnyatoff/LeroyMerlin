@@ -7,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.binnyatoff.leroymerlin.R
-import ru.binnyatoff.leroymerlin.data.Category
 import ru.binnyatoff.leroymerlin.data.Product
 import ru.binnyatoff.leroymerlin.repository.Repository
 import javax.inject.Inject
@@ -20,11 +18,6 @@ class ProductListViewModel @Inject constructor(private val repository: Repositor
     private val _viewState = MutableLiveData<ProductListState>()
     val viewState: LiveData<ProductListState> = _viewState
 
-    val categoryList: List<Category> = listOf(Category(
-        "Шпаклевки базовые", R.drawable.img_cat_1),
-        Category("Шпаклевки финишные", R.drawable.img_cat_2),
-        Category("Шпаклевки суперфинишные", R.drawable.img_cat_3))
-
     fun obtainEvent(event: ProductListEvent) {
         when (event) {
             is ProductListEvent.ScreenInit -> getFromDatabase()
@@ -34,8 +27,10 @@ class ProductListViewModel @Inject constructor(private val repository: Repositor
     fun obtainAction(action: ProductListAction) {
         when (action) {
             is ProductListAction.ClickedBag -> updateInBag(action.product)
-            is ProductListAction.ClickedShopList -> updateInShopList(action.productId,
-                action.inShopList)
+            is ProductListAction.ClickedShopList -> updateInShopList(
+                action.productId,
+                action.inShopList
+            )
         }
     }
 
@@ -58,8 +53,13 @@ class ProductListViewModel @Inject constructor(private val repository: Repositor
         viewModelScope.launch(Dispatchers.IO) {
             repository.getBagFromDatabase()
             repository.getFromProductsDatabase()
-            repository.productList.collect {
-                _viewState.postValue(ProductListState.Loaded(it, categoryList))
+            repository.getCategoryList()
+
+            repository.productList.collect { productList ->
+                repository.categoryList.collect { categoryList ->
+                    _viewState.postValue(ProductListState.Loaded(productList, categoryList))
+
+                }
             }
         }
     }

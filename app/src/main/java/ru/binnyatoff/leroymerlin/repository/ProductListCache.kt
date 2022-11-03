@@ -1,10 +1,11 @@
 package ru.binnyatoff.leroymerlin.repository
 
 import ru.binnyatoff.leroymerlin.R
+import ru.binnyatoff.leroymerlin.data.Category
 import ru.binnyatoff.leroymerlin.data.room.ProductDTO
 
 class ProductListCache {
-    val list = listOf(
+    val productList = listOf(
         ProductDTO(
             productName = "Шпаклёвка готовая финишная Danogips SuperFinish 18.1 кг",
             itemWeight = 18.1,
@@ -48,6 +49,12 @@ class ProductListCache {
             twoProductPrice = "",
             productImage = R.drawable.img_5
         )
+    )
+
+    val categoryList: List<Category> = listOf(
+        Category("Шпаклевки базовые", R.drawable.img_cat_1),
+        Category("Шпаклевки финишные", R.drawable.img_cat_2),
+        Category("Шпаклевки суперфинишные", R.drawable.img_cat_3)
     )
 }
 

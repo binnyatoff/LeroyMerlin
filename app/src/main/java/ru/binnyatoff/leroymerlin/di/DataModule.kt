@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import ru.binnyatoff.leroymerlin.data.room.AppDatabase
 import ru.binnyatoff.leroymerlin.data.room.BagDao
 import ru.binnyatoff.leroymerlin.data.room.ProductDao
+import ru.binnyatoff.leroymerlin.repository.ProductListCache
 import ru.binnyatoff.leroymerlin.repository.Repository
 import javax.inject.Singleton
 
@@ -39,8 +40,14 @@ class DataModule {
     }
 
     @Provides
-    @Singleton
-    fun provideRepository(productDao: ProductDao, bagDao: BagDao):Repository{
-        return Repository(productDao, bagDao)
+    fun provideProductListCache(): ProductListCache {
+        return ProductListCache()
     }
+
+    @Provides
+    @Singleton
+    fun provideRepository(productDao: ProductDao, bagDao: BagDao, productListCache: ProductListCache):Repository{
+        return Repository(productDao, bagDao, productListCache)
+    }
+
 }
